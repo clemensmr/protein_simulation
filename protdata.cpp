@@ -134,7 +134,7 @@ void PROTDATA::extract_dim(string& str, unsigned &n1, unsigned &n2, unsigned &n3
 }
 
 
-void PROTDATA::read_dxfile(const string &file, unsigned& n1, unsigned &n2, unsigned &n3, double &o1, double &o2, double &o3, double &d1, double &d2, double &d3, vector<double>  &v)
+void PROTDATA::read_dxfile(const string &file, unsigned& n1, unsigned &n2, unsigned &n3, double &o1, double &o2, double &o3, double &d1, double &d2, double &d3, vector<vector<vector double>>>  &v)
 {
   // open file and check if it was successful
 
@@ -185,12 +185,31 @@ void PROTDATA::read_dxfile(const string &file, unsigned& n1, unsigned &n2, unsig
         //      cout << line << endl;
         const unsigned N = n1*n2*n3;
 
-        v.resize(N);
-        unsigned i;
-        for (i=0; i<N; i+=3) {
+        //resive vector
+        v.resize(n1);
+        for(unsigned i = 0; i < n1; ++i){
+            v[i].resize(n2);
+            for(unsigned j = 0; j < n2; ++j){
+                v[i][j].resize(n3);
+            }
+        }
+        
+        //fill vector
+        for(unsigned i = 0; i < n1; ++i){
+            for(unsigned j = 0; j < n2; ++j){
+                for(unsigned k = 0; k < n3; ++k){
+                    
+                }
+            }
+        }
+                    
+        
+        for (unsigned i=0; i<; i+=3) {
         getline(infile, line);
         //        cout << line << endl;
         extract_orig(line, v[i], v[i+1], v[i+2]);
+        
+        
         }
         cout << "Read " << i << " values of " << N << "." << endl;
         
