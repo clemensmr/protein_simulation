@@ -23,7 +23,12 @@ int main(int argc, char** argv) {
     int MPC_horizon = 100;
 
 
-    string matrix_A = "../A.mtx";
+    string pot = "/home/clemens/data/APBS/cytc-pot-0.12-1.0.dx";
+    string kappa = "/home/clemens/data/APBS/cytc-kappa.dx.dx";
+    string dielx = "/home/clemens/data/APBS/cytc-dielx.dx.dx";
+    string diely = "/home/clemens/data/APBS/cytc-diely.dx.dx";
+    string dielz = "/home/clemens/data/APBS/cytc-dielz.dx.dx";
+    string charge = "/home/clemens/data/APBS/cytc-charge.dx.dx";
 
 
     args::ArgumentParser parser("convection diffusion equation 1d.", "This goes after the options.");
@@ -58,6 +63,10 @@ int main(int argc, char** argv) {
     }
     
     std::cout << "this works" << std::endl;
+    
+    PROTDATA data(charge, dielx, diely, dielz, kappa, pot);
+    
+    //data.read_dxfile(
 
 }
 
