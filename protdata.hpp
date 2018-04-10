@@ -20,25 +20,24 @@
 
 using namespace std;
 
-class PROTDATA {
+class ProtData {
 public:
     
-    PROTDATA();
-    PROTDATA(string charge, string dielx, string diely, string dielz, string kappa, string pot);
+    ProtData();
+    ProtData(const string charge, const string dielx, const string diely, const string dielz, const string kappa, const string pot);
 
-    void build_matrix();
     void extract_delta(string& str, double &d1, double &d2, double &d3);
     void extract_orig(string& str, double &o1, double &o2, double &o3);
     void extract_dim(string& str, unsigned &n1, unsigned &n2, unsigned &n3);
-    void read_dxfile(string &file, unsigned& n1, unsigned &n2, unsigned &n3, double &o1, double &o2, double &o3, double &d1, double &d2, double &d3, vector<vector<vector<double>>>  &v);
-    
-    void write_file(string filename, vector<vector<vector<double>>> &v);
-
+    void read_dxfile(const string &file, unsigned& n1, unsigned &n2, unsigned &n3, double &o1, double &o2, double &o3, double &d1, double &d2, double &d3, vector<vector<vector<double>>>  &v);
+    void freeMemory();
+    void write_file(const string filename, vector<vector<vector<double>>> &v);
+    void fix_vector(vector<vector<vector<double>>> &vec, const unsigned type);
 
 
     /** Default destructor */
     
-	//~PROTDATA();
+	//~ProtData();
 
 	/*
 	 * nx, ny, nz dimensions
@@ -46,13 +45,13 @@ public:
 	 * hx, hy, hz  grid widths
 	 */
 	
-	unsigned nx, ny, nz;
+	unsigned nx, ny, nz, N;
 	double ox, oy, oz;
-	double hx, hy, hz;
+	double hx, hy, hz, h;
         vector<vector<vector<double>>> charge, dielx, diely, dielz, kappa, pot;
         
         vector<unsigned> rows, cols;
-        vector<double> vals;
+        vector<float> vals;
         
         
 	
